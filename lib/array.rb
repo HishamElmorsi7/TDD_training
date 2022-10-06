@@ -48,15 +48,16 @@ def stock_pick(price_per_days)
     price_per_days.each do |key, val|
         if( val < lowest_price )
             lowest_price = val
-            lowest_price_day = key 
+            lowest_price_day = key
         end
 
         if( val >= highest_price )
             highest_price = val
-            highest_price_day = key 
+            highest_price_day = key
         end
-
     end
+
+    return nil if lowest_price_day == price_per_days.keys.last
 
     [lowest_price_day, highest_price_day]
 end

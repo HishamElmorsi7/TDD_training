@@ -24,8 +24,16 @@ describe 'uniq' do
 end
 
 describe 'two_sums' do
+
+    let(:arr){ [-1, 2, -2, 1] }
+    let(:one_zero_arr) { [-1, 2, 0]}
+
     it 'finds all pairs of positions where the elements at those positions sum to zero' do
-        expect(two_sum( [-1, 0, 2, -2, 1] )).to eq( [[0, 4], [2, 3]])
+        expect(two_sum( arr )).to eq( [[0, 3], [1, 2]])
+    end
+
+    it "doesn't get confused by zeros" do
+        expect(two_sum(one_zero_arr)).to eq([])
     end
 end
 
@@ -53,5 +61,10 @@ describe 'stock_pick' do
         stock_price_per_days = { 'Day 0' => 1000, 'Day 1' => 500, 'Day 2' => 2000, 'Day 3' => 5000, 'Day 4' => 600, 'Day 5' => 7000, 'Day 6' => 3000 }
         expect(stock_pick(stock_price_per_days)).to eq(['Day 1', 'Day 5'])
 
+    end
+
+    it "doesn't by stock in crash" do
+        stock_price_per_days = { 'Day 0' => 1000, 'Day 1' => 500, 'Day 2' => 2000, 'Day 3' => 5000, 'Day 4' => 600, 'Day 5' => 7000, 'Day 6' => 100 }
+        expect(stock_pick(stock_price_per_days)).to be_nil
     end
 end
