@@ -8,8 +8,7 @@
 
 
 ## What I learned! :
-Through that project I could practice more Unit Testing \
-and had a nice time with writing the implementation of Tower of Hanoi !
+Through that project I could practice more Unit Testing, and had a nice time with writing the implementation of Tower of Hanoi !
 
 
 ## Want to play the game ?
