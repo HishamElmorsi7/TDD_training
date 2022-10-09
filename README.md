@@ -30,4 +30,4 @@ game = TowerOfHanoi.new
 game.play
 ```
 
-<img src= "https://ibb.co/gjYPL1k">
+<img src= "[https://ibb.co/gjYPL1k](https://i.ibb.co/K0nLpZT/Screenshot-from-2022-10-09-05-56-21.png)">
