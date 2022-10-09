@@ -3,18 +3,18 @@ require 'tower_of_hanoi'
 
 
 describe TowerOfHanoi do
-    subject(towerOfHanoi) { TowerOfHanoi.new}
+    subject(:towerOfHanoi) { TowerOfHanoi.new}
 
     describe '#initialize' do
-        it 'creates a game with piles and discs' do
-            expect(towerOfHanoi.piles).to eq({ 0 => [3, 2, 1], 1 => [], 2 => [] })
+        it 'creates a game with towers and discs' do
+            expect(towerOfHanoi.towers).to eq({ 0 => [3, 2, 1], 1 => [], 2 => [] })
         end
     end
 
 
     describe '#render' do
         it 'pretty prints stacks' do
-            expect(towerOfHanoi.render).to eq("tower 0 : 3 2 1\ntower 1 :\ntower 2 :\n")
+            expect(towerOfHanoi.render).to eq("tower 0 : 3 2 1\ntower 1 : \ntower 2 : \n")
         end
 
         it 'prints shorter stacks' do
@@ -27,22 +27,22 @@ describe TowerOfHanoi do
 
     describe '#move' do
         it 'allows moving to a blank space' do
-            expect(towerOfHanoi.move(0, 1)).not_to raise_error
+            expect { towerOfHanoi.move(0, 1) }.not_to raise_error
         end
 
-        it 'allows moving to a smaller disc' do
+        it 'allows moving to a larger disc' do
             towerOfHanoi.move(0, 2)
             towerOfHanoi.move(0, 1)
-            expect(towerOfHanoi).move(2, 1).not_to raise_error
+            expect { towerOfHanoi.move(2, 1) }.not_to raise_error
         end
 
         it "doesn't allow moving from a blank space" do
-            expect(towerOfHanoi.move(1, 2)).to raise_error("can't move from a blank space")
+            expect{ towerOfHanoi.move(1, 0) }.to raise_error("can't move from a blank space")
         end
 
         it "doesn't allow moving to a smaller disc" do
             towerOfHanoi.move(0, 1)
-            expect(towerOfHanoi).move(0, 1).to raise_error("can't move to a smaller disc")
+            expect { towerOfHanoi.move(0, 1) }.to raise_error("can't move to a smaller disc")
         end
     end
 
@@ -54,28 +54,29 @@ describe TowerOfHanoi do
 
         it 'is won when all discs are moved to tower 1' do
             # moves to win the game
-            towers.move(0, 1)
-            towers.move(0, 2)
-            towers.move(1, 2)
-            towers.move(0, 1)
-            towers.move(2, 0)
-            towers.move(2, 1)
-            towers.move(0, 1)
+            towerOfHanoi.move(0, 1)
+            towerOfHanoi.move(0, 2)
+            towerOfHanoi.move(1, 2)
+            towerOfHanoi.move(0, 1)
+            towerOfHanoi.move(2, 0)
+            towerOfHanoi.move(2, 1)
+            towerOfHanoi.move(0, 1)
 
-            expect(towers).to be_won
+            expect(towerOfHanoi).to be_won
         end
 
         it 'is won when all discs are moved to tower 2' do
 
             # Perform the moves to move the game into winning position
-            towers.move(0, 2)
-            towers.move(0, 1)
-            towers.move(2, 1)
-            towers.move(0, 2)
-            towers.move(1, 0)
-            towers.move(1, 2)
-            towers.move(0, 2)
+            towerOfHanoi.move(0, 2)
+            towerOfHanoi.move(0, 1)
+            towerOfHanoi.move(2, 1)
+            towerOfHanoi.move(0, 2)
+            towerOfHanoi.move(1, 0)
+            towerOfHanoi.move(1, 2)
+            towerOfHanoi.move(0, 2)
 
-            expect(towers).to be_won
+            expect(towerOfHanoi).to be_won
         end
+    end
 end
