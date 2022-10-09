@@ -62,5 +62,4 @@ game = TowerOfHanoi.new
 game.play
 ```
 
-<img src= "https://drive.google.com/file/d/1AlhxD_J6JLqTHQuCN0K9_1OnTDb9-K7i/view?usp=sharing">
-">
+<img src= "https://ibb.co/gjYPL1k">
